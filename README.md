@@ -53,3 +53,22 @@ O objetivo é informatizar o processo de captação e gestão de doações, subs
 1. Clone este repositório:
    ```bash
    git clone [https://github.com/dudaliimaa/sistema-ong-semestres.git](https://github.com/dudaliimaa/sistema-ong-semestres.git)
+2. Abra o projeto no VS Code ou IntelliJ/Eclipse.
+
+3. Aguarde o Maven baixar as dependências (atualize o projeto se necessário).
+
+4. Localize e execute a classe principal:
+
+src/main/java/br/gov/sp/fatec/pg/Main.java
+
+5. O console exibirá: Servidor rodando em http://localhost:7078.
+
+## Acessando a Aplicação
+Sistema Web: http://localhost:7078
+Documentação API (Swagger): http://localhost:7078/swagger
+
+👥 Autores (Grupo)
+Eduarda Lima
+Nathalia Cappellini
+Vitor Lopes
+Mateus Pinheiro
