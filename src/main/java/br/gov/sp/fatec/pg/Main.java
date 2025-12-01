@@ -8,6 +8,8 @@ import br.gov.sp.fatec.pg.repository.DoacaoRepository;
 import br.gov.sp.fatec.pg.repository.UserRepository;
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
+import io.javalin.openapi.plugin.OpenApiPlugin;
+import io.javalin.openapi.plugin.swagger.SwaggerPlugin;
 
 import java.util.List;
 import java.util.Map;
