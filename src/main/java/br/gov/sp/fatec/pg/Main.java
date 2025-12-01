@@ -38,6 +38,20 @@ public class Main {
             
             // Ajuste de acentuação
             config.pvt.javaLangErrorHandler((res, error) -> res.setCharacterEncoding("UTF-8"));
+
+             config.registerPlugin(new OpenApiPlugin(pluginConfig -> {
+                pluginConfig.withDefinitionConfiguration((version, definition) -> {
+                    definition.withInfo(info -> {
+                        info.setTitle("API ONG Sementes do Amanhã");
+                        info.setVersion("1.0.0");
+                        info.setDescription("Sistema de Gestão de Doações - ADS FATEC PG");
+                    });
+                });
+            }));
+            
+            config.registerPlugin(new SwaggerPlugin(swaggerConfig -> {
+                swaggerConfig.setUiPath("/swagger"); 
+            }));
         }).start(7078);
 
         // 4. SEGURANÇA (Middlewares)
