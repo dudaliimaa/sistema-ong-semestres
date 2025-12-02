@@ -1,4 +1,4 @@
-# 🌱 Portal ONG Sementes do Amanhã
+# Portal ONG Sementes do Amanhã
 
 > **Sistema de Gestão Fullstack** para Logística de Doações e Controle de Voluntariado.
 
