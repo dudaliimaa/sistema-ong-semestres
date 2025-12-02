@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 /**
  * Classe responsável pela Infraestrutura do Banco de Dados.
- * Ela gerencia a conexão com o arquivo físico (.db) e cria a estrutura das tabelas (DDL).
+ * Gerencia a conexão com o arquivo físico (.db) e cria a estrutura das tabelas (DDL Data Definition Language).
  */
 public class SQLiteConnection {
 
@@ -24,34 +24,31 @@ public class SQLiteConnection {
 
     /**
      * Método de Inicialização (Setup).
-     * É chamado no Main.java assim que o sistema liga.
+     * Chamado no Main.java assim que o sistema liga
      * Garante que as tabelas existam antes de qualquer operação.
      */
     public static void createTables() {
         
-        // 1. Definição da Tabela de USUÁRIOS
+        //Definição da Tabela de USUÁRIOS
         String sqlUsers = "CREATE TABLE IF NOT EXISTS users (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " + // ID automático (1, 2, 3...)
-                "username TEXT UNIQUE NOT NULL, " +        // UNIQUE: Não permite dois usuários com mesmo nome
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " + 
+                "username TEXT UNIQUE NOT NULL, " +        
                 "password TEXT NOT NULL, " +               // Senha (será salvo o Hash criptografado)
                 "role TEXT NOT NULL DEFAULT 'USER', " +    // Nível de acesso (USER ou ADMIN)
                 "token TEXT);";                            // Guarda a sessão do usuário logado
 
-        // 2. Definição da Tabela de DOAÇÕES (Com Logística)
+        //Definição da Tabela de DOAÇÕES
         String sqlDoacoes = "CREATE TABLE IF NOT EXISTS doacoes (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "descricao TEXT NOT NULL, " +
                 
-                // [NOVOS CAMPOS DE LOGÍSTICA]
-                "quantidade TEXT, " +  // Ex: "5kg", "2 caixas"
-                "destino TEXT, " +     // Ex: "Sede", "Família Silva"
+                "quantidade TEXT, " +  
+                "destino TEXT, " +    
                 
                 "recebido BOOLEAN DEFAULT FALSE, " + // Status: 0 (Pendente) ou 1 (Entregue)
-                "userId INTEGER NOT NULL, " +        // Quem registrou?
+                "userId INTEGER NOT NULL, " +       
                 
                 // CHAVE ESTRANGEIRA (Foreign Key):
-                // Cria um vínculo inquebrável entre a doação e o usuário.
-                // Se tentarmos salvar uma doação sem dono, o banco bloqueia.
                 "FOREIGN KEY (userId) REFERENCES users(id));";
 
         // Bloco de Execução
